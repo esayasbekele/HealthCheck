@@ -24,7 +24,7 @@ container.RegisterInstance<IHealthCheckService>(healthCheckService);
 ```
 
 
-3.Add a controller that leverages the healthcheck lib
+3. Add a controller that leverages the healthcheck lib
 
 ```
 [RoutePrefix("")]
@@ -42,14 +42,14 @@ _healthCheckService = healthCheckService;
 [Route("hc")]
 public HttpResponseMessage Get()
 {
-var results = _healthCheckService.Check();
-HttpConfiguration config = new HttpConfiguration();
-config.Formatters.JsonFormatter.SerializerSettings.Converters.Add
-(new Newtonsoft.Json.Converters.StringEnumConverter());
-config.Formatters.JsonFormatter.SupportedMediaTypes
-.Add(new MediaTypeHeaderValue("text/html"));
-return Request.CreateResponse(results.Any(r => r.Value.Status == Status.Unhealthy) 
-? HttpStatusCode.ServiceUnavailable : HttpStatusCode.OK, results, config);
-}
+  var results = _healthCheckService.Check();
+  HttpConfiguration config = new HttpConfiguration();
+  config.Formatters.JsonFormatter.SerializerSettings.Converters.Add
+  (new Newtonsoft.Json.Converters.StringEnumConverter());
+  config.Formatters.JsonFormatter.SupportedMediaTypes
+  .Add(new MediaTypeHeaderValue("text/html"));
+  return Request.CreateResponse(results.Any(r => r.Value.Status == Status.Unhealthy) 
+  ? HttpStatusCode.ServiceUnavailable : HttpStatusCode.OK, results, config);
+ }
 } 
  ```
