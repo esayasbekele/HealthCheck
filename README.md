@@ -15,7 +15,9 @@ Steps to adding HealthCheck to a asp.net web api 2
 
 2. Enable Route Mapping 
 
-```config.MapHttpAttributeRoutes(); 
+```
+ config.MapHttpAttributeRoutes(); 
+
 ```
 
 
@@ -42,7 +44,8 @@ config.Formatters.JsonFormatter.SerializerSettings.Converters.Add
 (new Newtonsoft.Json.Converters.StringEnumConverter());
 config.Formatters.JsonFormatter.SupportedMediaTypes
 .Add(new MediaTypeHeaderValue("text/html"));
-return Request.CreateResponse(results.Any(r => r.Value.Status == Status.Unhealthy) ? HttpStatusCode.ServiceUnavailable : HttpStatusCode.OK, results, config);
+return Request.CreateResponse(results.Any(r => r.Value.Status == Status.Unhealthy) 
+? HttpStatusCode.ServiceUnavailable : HttpStatusCode.OK, results, config);
 }
 } 
  ```
