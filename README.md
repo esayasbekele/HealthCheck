@@ -3,7 +3,7 @@
 
 Steps to adding HealthCheck to a asp.net web api 2
 
-1. On startup build and register the healthcheck service
+1. On startup, build and register the healthcheck service
 
 ```
 var healthCheckService = new HealthCheckBuilder()
