@@ -5,7 +5,8 @@ Steps to adding HealthCheck to a asp.net web api 2
 
 1. Build and register the healthcheck service
 
-```var healthCheckService = new HealthCheckBuilder()
+```
+var healthCheckService = new HealthCheckBuilder()
 .AddUrlCheck("http://www.google.com", "http://example.com", "http://infoq.com")
 .AddUrlCheckWithBasicAuth("http://httpbin.org/basic-auth/user/passwd", "user", "passwd")
 .AddSqlServerCheck("localdb", @"Data Source=.\SQLEXPRESS; Initial Catalog=master; Integrated Security=True")
@@ -23,7 +24,8 @@ Steps to adding HealthCheck to a asp.net web api 2
 
 3.Add a controller that leverages the healthcheck lib
 
-```[RoutePrefix("")]
+```
+[RoutePrefix("")]
 public class HealthController : ApiController
  {
 private readonly IHealthCheckService _healthCheckService;
