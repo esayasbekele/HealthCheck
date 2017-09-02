@@ -3,7 +3,7 @@
 
 Steps to adding HealthCheck to a asp.net web api 2
 
-1. Build and register the healthcheck service
+1. On startup build and register the healthcheck service
 
 ```
 var healthCheckService = new HealthCheckBuilder()
@@ -12,6 +12,8 @@ var healthCheckService = new HealthCheckBuilder()
 .AddSqlServerCheck("localdb", @"Data Source=.\SQLEXPRESS; Initial Catalog=master; Integrated Security=True")
 .RunInParallel()
 .Build(); 
+
+container.RegisterInstance<IHealthCheckService>(healthCheckService);
 ```
 
 2. Enable Route Mapping 
